@@ -1,7 +1,6 @@
+import PropTypes from 'prop-types';
+
 export const GifItem = ({title,url}) => {
-
-    console.log(url)
-
     const copyPath = ()=>{
         navigator.clipboard.writeText(url)
     }
@@ -16,4 +15,9 @@ export const GifItem = ({title,url}) => {
         <button className=""onClick={copyPath}>Copy Path</button>
     </div>
   )
+}
+
+GifItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired
 }
