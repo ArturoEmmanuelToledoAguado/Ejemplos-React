@@ -11,9 +11,15 @@ export const useForm = (initialForm = {}) => {
             [name]:value
         });
     }
+
+    const onResetForm = () => {
+        setFormSate(initialForm);
+    }
+
   return {
     ...formState,
     formState,
     onInputChange,
+    onResetForm,
   }
 }
