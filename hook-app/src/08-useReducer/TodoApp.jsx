@@ -1,4 +1,6 @@
 import { useReducer } from "react"
+import { TodoAdd } from "./TodoAdd";
+import { TodoList } from "./TodoList";
 import { todoReducer } from "./todoReducer"
 
 const initialState=[
@@ -17,7 +19,7 @@ const initialState=[
 export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, initialState);
 
-    const gandleNewTodo = (todo) => {
+    const handleNewTodo = (todo) => {
         console.log({todo});
     }
 
@@ -28,39 +30,13 @@ export const TodoApp = () => {
 
         <div className="row">
             <div className="col-7">
-                //TodoList
-                <ul className="list-group">
-                    {
-                        todos.map( todo => (
-                            //TodoItem..
-                            <li key={todo.id} className="list-group-item d-flex justify-content-between">
-                                <span className="aling-self-center">Item 1</span>
-                                <button className="btn btn-danger">Borrar</button>
-                            </li>
-                        ))
-                    }
-                </ul>
-                //endTodoList
+                <TodoList todos={todos}/>
             </div>
 
             <div className="col-5">
                 <h4>Agregar TODO</h4>
                 <hr/>
-                //TodoAdd
-                <form>
-                    <input
-                        type="text"
-                        placeholder="Que hay que hacer?"
-                        className="form-control"
-                    />
-                    <button 
-                        type="submit"
-                        className="btn btn-primary mt-1"
-                    >
-                        Agregar
-                    </button>
-                </form>
-                //end
+                <TodoAdd onNewTodo={handleNewTodo}/>
             </div>
         </div>
     </>
